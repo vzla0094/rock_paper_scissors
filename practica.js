@@ -4,8 +4,8 @@ function computerPlay (){
 }
 
 function game() {
-    let computerScore;
-    let userScore;
+    let computerScore = 0;
+    let userScore = 0;
 
     function playRound (playerSelection_,computerSelection_){
         let playerSelection;
@@ -52,6 +52,11 @@ function game() {
         playerSelection = prompt("Rock, paper or scissors?");
         computerSelection = computerPlay();
         
+        console.log(playRound(playerSelection,computerSelection));
+    }
+
+    while (computerScore===userScore){
+        playerSelection = prompt("Rock, paper or scissors?");
         console.log(playRound(playerSelection,computerSelection));
     }
 
