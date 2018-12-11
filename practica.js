@@ -33,8 +33,8 @@ function game() {
                 looserElement = "paper";
                 winnerElement = "scissors";
             }
-            winMessage = `Congratulations! ${winnerElement} beats ${looserElement}`;
-            lossMessage = `You Lose! ${winnerElement} beats ${looserElement}`;
+            winMessage = `Congratulations! you win this round, ${winnerElement} beats ${looserElement}`;
+            lossMessage = `You lose this round, ${winnerElement} beats ${looserElement}`;
         })();
 
         if (playerSelection===winnerElement){
@@ -49,9 +49,8 @@ function game() {
     }
 
     for (let i = 0; i < 5; i++) {
-        playerSelection = prompt("Rock, paper or scissors?");
-        computerSelection = computerPlay();
-        
+        playerSelection = prompt("Rock, paper or scissors?");        
+        computerSelection = computerPlay();        
         console.log(playRound(playerSelection,computerSelection));
     }
 
