@@ -1,28 +1,24 @@
 function computerPlay (){
-    let arr = ["Rock","Paper","Scissors"];
+    let arr = ["rock","paper","scissors"];
     return arr[Math.floor(Math.random()*arr.length)];
 }
 
 function game() {
     let computerScore = 0;
     let userScore = 0;
+    let playerSelection;
+    let computerSelection;
+    const validEntries = ["rock","paper","scissors"];
 
     function playRound (playerSelection_,computerSelection_){
-        let playerSelection;
-        let computerSelection;
         let looserElement;
         let winnerElement;
         let winMessage;
         let lossMessage;
         let tieMessage = "You are tied";
 
-        (function textTransformer (){
-            playerSelection = playerSelection_.toLowerCase();
-            computerSelection = computerSelection_.toLowerCase();
-        })();
-
         (function setWinnerElement (){
-            let arr = [playerSelection,computerSelection];
+            let arr = [playerSelection_,computerSelection_];
             if (arr.includes("rock")&&arr.includes("scissors")){
                 looserElement = "scissors";
                 winnerElement = "rock";
@@ -37,10 +33,10 @@ function game() {
             lossMessage = `You lose this round, ${winnerElement} beats ${looserElement}`;
         })();
 
-        if (playerSelection===winnerElement){
+        if (playerSelection_===winnerElement){
             userScore++;
             return winMessage;
-        }else if (playerSelection===looserElement){
+        }else if (playerSelection_===looserElement){
             computerScore++;
             return lossMessage;
         }else{
@@ -49,13 +45,20 @@ function game() {
     }
 
     for (let i = 0; i < 5; i++) {
-        playerSelection = prompt("Rock, paper or scissors?");        
+        playerSelection = prompt("Rock, paper or scissors?").toLowerCase();
+        while (!validEntries.includes(playerSelection)){
+            playerSelection = prompt("ERROR!\n\nPlease select one of the following valid entries\nRock, paper or scissors?").toLowerCase();
+        }
         computerSelection = computerPlay();        
         console.log(playRound(playerSelection,computerSelection));
     }
 
     while (computerScore===userScore){
-        playerSelection = prompt("Rock, paper or scissors?");
+        playerSelection = prompt("Game is tied, please choose again for another round\nRock, paper or scissors?").toLowerCase();
+        while (!validEntries.includes(playerSelection)){
+            playerSelection = prompt("ERROR!\n\nPlease select one of the following valid entries\nRock, paper or scissors?").toLowerCase();
+        }
+        computerSelection = computerPlay();        
         console.log(playRound(playerSelection,computerSelection));
     }
 
