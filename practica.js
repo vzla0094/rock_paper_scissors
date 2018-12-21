@@ -12,40 +12,6 @@ function computerPlay (){
 	return arr[Math.floor(Math.random()*arr.length)];
 }
 
-function game() {
-	const validEntries = ["rock","paper","scissors"];
-
-	function validateEntry() {
-		while (!validEntries.includes(playerSelection)){
-			playerSelection = prompt("ERROR!\n\nPlease select one of the following valid entries\nRock, paper or scissors?").toLowerCase();
-		}
-	}
-
-	for (let i = 0; i < 5; i++) {
-		playerSelection = prompt("Rock, paper or scissors?").toLowerCase();
-		validateEntry();
-		computerSelection = computerPlay();        
-		console.log(playRound(playerSelection,computerSelection));
-	}
-
-	while (computerScore===userScore){
-		playerSelection = prompt("Game is tied, please choose again for another round\nRock, paper or scissors?").toLowerCase();
-		validateEntry();
-		computerSelection = computerPlay();        
-		console.log(playRound(playerSelection,computerSelection));
-	}
-
-	if (computerScore>userScore){
-		computerScore = 0;
-		userScore = 0;
-		return "Computer wins, you lose:(";
-	}else{
-		computerScore = 0;
-		userScore = 0;
-		return "You won!";
-	}
-}
-
 function playRound (event){
 	let looserElement;
 	let winnerElement;
