@@ -1,5 +1,11 @@
 let computerScore = 0;
 let userScore = 0;
+const cpuScoreContainer = document.querySelector('#cpuScore');
+const userScoreContainer = document.querySelector('#userScore');
+const roundResultsContainer = document.querySelector('#roundResults');
+
+const weaponsArr = document.querySelectorAll('.weapons');
+weaponsArr.forEach(weapon=>weapon.addEventListener('click',playRound));
 
 function computerPlay (){
 	let arr = ["rock","paper","scissors"];
@@ -7,8 +13,6 @@ function computerPlay (){
 }
 
 function game() {
-	let playerSelection;
-	let computerSelection;
 	const validEntries = ["rock","paper","scissors"];
 
 	function validateEntry() {
@@ -42,9 +46,11 @@ function game() {
 	}
 }
 
-function playRound (playerSelection_,computerSelection_){
+function playRound (event){
 	let looserElement;
 	let winnerElement;
+	let playerSelection_ = event.target.alt;
+	let computerSelection_ = computerPlay();
 
 	(function setWinnerElement (){
 		let arr = [playerSelection_,computerSelection_];
@@ -62,11 +68,27 @@ function playRound (playerSelection_,computerSelection_){
 
 	if (playerSelection_===winnerElement){
 		userScore++;
-		return `Congratulations! you win this round, ${winnerElement} beats ${looserElement}`;
+		roundResultsContainer.textContent = `Congratulations! you win this round, ${winnerElement} beats ${looserElement}`;
+		// return `Congratulations! you win this round, ${winnerElement} beats ${looserElement}`;
 	}else if (playerSelection_===looserElement){
 		computerScore++;
-		return `You lose this round, ${winnerElement} beats ${looserElement}`;
+		roundResultsContainer.textContent = `You lose this round, ${winnerElement} beats ${looserElement}`;
+		// return `You lose this round, ${winnerElement} beats ${looserElement}`;
 	}else{
-		return "You are tied";
+		roundResultsContainer.textContent = "You are tied";
+		// return "You are tied";
+	}	
+	userScoreContainer.textContent = `${userScore}`;
+	cpuScoreContainer.textContent = `${computerScore}`;
+
+	if (userScore===5){
+		roundResultsContainer.textContent = "YOU WON!!";
+		computerScore = 0;
+		userScore = 0;
+	}else if(computerScore===5){
+		roundResultsContainer.textContent = "Computer wins, you lose :C";
+		computerScore = 0;
+		userScore = 0;
 	}
+	
 }
