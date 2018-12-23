@@ -32,29 +32,39 @@ function playRound (event){
 		}
 	})();
 
-	if (playerSelection_===winnerElement){
-		userScore++;
-		roundResultsContainer.textContent = `Congratulations! you win this round, ${winnerElement} beats ${looserElement}`;
-		// return `Congratulations! you win this round, ${winnerElement} beats ${looserElement}`;
-	}else if (playerSelection_===looserElement){
-		computerScore++;
-		roundResultsContainer.textContent = `You lose this round, ${winnerElement} beats ${looserElement}`;
-		// return `You lose this round, ${winnerElement} beats ${looserElement}`;
-	}else{
-		roundResultsContainer.textContent = "You are tied";
-		// return "You are tied";
-	}	
-	userScoreContainer.textContent = `${userScore}`;
-	cpuScoreContainer.textContent = `${computerScore}`;
+	(function highlightPlayerSelection (){
+		let img = event.target;
+		img.classList.toggle('playerSelection');
+		img.addEventListener('transitionend',showResults);
+		img.addEventListener('transitionend',e=>e.target.classList.remove('playerSelection'));        
 
-	if (userScore===5){
-		roundResultsContainer.textContent = "YOU WON!!";
-		computerScore = 0;
-		userScore = 0;
-	}else if(computerScore===5){
-		roundResultsContainer.textContent = "Computer wins, you lose :C";
-		computerScore = 0;
-		userScore = 0;
-	}
-	
+		function showResults (event){
+			if (playerSelection_===winnerElement){
+				userScore++;
+				roundResultsContainer.textContent = `Congratulations! you win this round, ${winnerElement} beats ${looserElement}`;
+				// return `Congratulations! you win this round, ${winnerElement} beats ${looserElement}`;
+			}else if (playerSelection_===looserElement){
+				computerScore++;
+				roundResultsContainer.textContent = `You lose this round, ${winnerElement} beats ${looserElement}`;
+				// return `You lose this round, ${winnerElement} beats ${looserElement}`;
+			}else{
+				roundResultsContainer.textContent = "You are tied";
+				// return "You are tied";
+			}
+
+			userScoreContainer.textContent = `${userScore}`;
+			cpuScoreContainer.textContent = `${computerScore}`;
+
+			if (userScore===5){
+				roundResultsContainer.textContent = "YOU WON!!";
+				computerScore = 0;
+				userScore = 0;
+			}else if(computerScore===5){
+				roundResultsContainer.textContent = "Computer wins, you lose :C";
+				computerScore = 0;
+				userScore = 0;
+			}
+			img.removeEventListener('transitionend',showResults);
+		}
+	})();
 }

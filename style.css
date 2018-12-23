@@ -1,8 +1,57 @@
+body {
+  
+  padding-top: 20px;
+}
+
 img {
-    padding: 10px;
+  border-radius: 50%;
+  transition: transform 0.3s;
+  width: 100px;
+  height: 100px;
 }
 
 img:hover {
-    box-shadow: 0 0 5px 0px blue;
+    box-shadow: 0 0 50px -10px rgb(116, 128, 116);
     cursor: pointer;
+}
+
+h1 {
+  font-family: 'Thasadith', sans-serif;
+  color: rgb(165, 148, 148);
+}
+
+#container {
+  	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.computerSelection {
+	box-shadow: 0 0 50px 2px red;
+	transform: scale(1.1);
+}
+
+.playerSelection {
+	box-shadow: 0 0 50px 2px green;
+	transform: scale(1.1);
+}
+
+#weapons {
+	display: inline-flex;
+	flex-direction: column;
+}
+
+#arena {
+	display: inline-flex;
+	background: whitesmoke;
+	width: 60%;
+	
+}
+
+#score {
+	display: inline-flex;
+	flex-direction: column;
+	background: whitesmoke;
+	width: 20%;
+	text-align: center;	
 }

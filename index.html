@@ -5,29 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Thasadith:700" rel="stylesheet">
 </head>
 <body>
     <div>
-        <h2>Welcome to the Rock, Paper & Scissors game!</h2>
+        <h1>Welcome to the Rock, Paper & Scissors game!</h1>
     </div>
     <div id="container">
-        <img class="weapons" src="images/rock.jpeg" alt="rock">
-        <img class="weapons" src="images/paper.jpeg" alt="paper">
-        <img class="weapons" src="images/scissors.jpeg" alt="scissors">
+        <div id="weapons">
+            <img class="weapons" src="images/rock.jpeg" alt="rock">
+            <img class="weapons" src="images/paper.jpeg" alt="paper">
+            <img class="weapons" src="images/scissors.jpeg" alt="scissors">
+        </div>
+		
+		<div id="arena">
+			
+		
+		</div>
+        
+        <div id=score>
+			<h4>Your score</h4>
+			<p id=userScore></p>
+
+			<h4>Computer score</h4>
+			<p id=cpuScore></p>
+			<p id=roundResults></p>
+        </div>        
     </div>
 
     <div>
         <h3>Choose your weapon</h3>
     </div>
 
-    <div id=score>
-        <h4>Your score</h4>
-        <p id=userScore></p>
-
-        <h4>Computer score</h4>
-        <p id=cpuScore></p>
-        <p id=roundResults></p>
-    </div>
+    
     <script src="practica.js"></script>
 </body>
 </html>
