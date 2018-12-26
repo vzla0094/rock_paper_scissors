@@ -35,21 +35,36 @@ function playRound (event){
 	(function highlightPlayerSelection (){
 		let img = event.target;
 		img.classList.toggle('playerSelection');
-		img.addEventListener('transitionend',showResults);
-		img.addEventListener('transitionend',e=>e.target.classList.remove('playerSelection'));        
+		img.addEventListener('transitionend',showFight);
+		img.addEventListener('transitionend',e=>e.target.classList.remove('playerSelection'));
+		if (document.querySelector('.cpuWeapon')){
+			document.querySelector('#arena').removeChild(document.querySelector('.playerWeapon'));
+			document.querySelector('#arena').removeChild(document.querySelector('.cpuWeapon'));
+		}
+		
+		function showFight(params) {
+			let playerWeapon = document.createElement('img');
+			let cpuWeapon = document.createElement('img');
+			let cpuSelection = document.querySelector(`img[alt="${computerSelection_}"]`);			
+			playerWeapon.setAttribute('src',`${img['src']}`);			
+			cpuWeapon.setAttribute('src',`${cpuSelection['src']}`);
+			document.getElementById('arena').appendChild(playerWeapon);
+			document.getElementById('arena').appendChild(cpuWeapon);
+			playerWeapon.classList.add('playerWeapon');
+			cpuWeapon.classList.add('cpuWeapon');
+			img.removeEventListener('transitionend',showFight);
+			playerWeapon.addEventListener('animationend',showResults);
+		}
 
 		function showResults (event){
 			if (playerSelection_===winnerElement){
 				userScore++;
-				roundResultsContainer.textContent = `Congratulations! you win this round, ${winnerElement} beats ${looserElement}`;
-				// return `Congratulations! you win this round, ${winnerElement} beats ${looserElement}`;
+				roundResultsContainer.textContent = `Congratulations! you win this round, ${winnerElement} beats ${looserElement}`;				
 			}else if (playerSelection_===looserElement){
 				computerScore++;
 				roundResultsContainer.textContent = `You lose this round, ${winnerElement} beats ${looserElement}`;
-				// return `You lose this round, ${winnerElement} beats ${looserElement}`;
 			}else{
 				roundResultsContainer.textContent = "You are tied";
-				// return "You are tied";
 			}
 
 			userScoreContainer.textContent = `${userScore}`;
@@ -64,7 +79,7 @@ function playRound (event){
 				computerScore = 0;
 				userScore = 0;
 			}
-			img.removeEventListener('transitionend',showResults);
+			img.removeEventListener('transitionend',showResults);			
 		}
 	})();
 }

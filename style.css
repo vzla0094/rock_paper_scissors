@@ -6,7 +6,11 @@ body {
 img {
   border-radius: 50%;
   transition: transform 0.3s;
-  width: 100px;
+  
+}
+
+img.weapons {
+	width: 100px;
   height: 100px;
 }
 
@@ -45,7 +49,8 @@ h1 {
 	display: inline-flex;
 	background: whitesmoke;
 	width: 60%;
-	
+	justify-content: space-between;
+	align-items: center;
 }
 
 #score {
@@ -54,4 +59,40 @@ h1 {
 	background: whitesmoke;
 	width: 20%;
 	text-align: center;	
+}
+
+.cpuWeapon {
+	position: relative;
+	animation-name: cpuFight;
+	animation-duration: 0.3s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+	box-shadow: 0 0 50px 2px red;
+}
+
+@keyframes cpuFight{
+	0%{
+		right: 0;
+	}
+	100%{
+		right: 30%;
+	}
+}
+
+.playerWeapon {
+	position: relative;
+	animation-name: playerFight;
+	animation-duration: 0.3s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+	box-shadow: 0 0 50px 2px green;
+}
+
+@keyframes playerFight{
+	0%{
+		left: 0;
+	}
+	100%{
+		left: 30%;
+	}
 }
