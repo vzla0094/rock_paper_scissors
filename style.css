@@ -6,7 +6,7 @@ body {
 img {
   border-radius: 50%;
   transition: transform 0.3s;
-  
+  width: 50%;
 }
 
 img.weapons {
@@ -22,6 +22,10 @@ img:hover {
 h1 {
   font-family: 'Thasadith', sans-serif;
   color: rgb(165, 148, 148);
+}
+
+#title{
+	text-align: center;
 }
 
 #container {
@@ -43,14 +47,25 @@ h1 {
 #weapons {
 	display: inline-flex;
 	flex-direction: column;
+	width: 20%;
 }
 
 #arena {
-	display: inline-flex;
-	background: whitesmoke;
-	width: 60%;
-	justify-content: space-between;
-	align-items: center;
+	display: inline-flex;	
+	width: 80%;
+}
+
+#playerCorner{
+	width: 50%;
+	position: relative;
+	text-align: center;
+	border-right: 1px solid gray;
+}
+
+#cpuCorner{
+	width: 50%;
+	position: relative;
+	text-align: center;
 }
 
 #score {
@@ -62,12 +77,15 @@ h1 {
 }
 
 .cpuWeapon {
-	position: relative;
+	position: absolute;
 	animation-name: cpuFight;
-	animation-duration: 0.3s;
+	animation-duration: 0.5s;
 	animation-fill-mode: forwards;
-	animation-timing-function: ease-out;
-	box-shadow: 0 0 50px 2px red;
+	animation-timing-function: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+	margin: 0;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
 }
 
 @keyframes cpuFight{
@@ -75,24 +93,27 @@ h1 {
 		right: 0;
 	}
 	100%{
-		right: 30%;
+		right: 50%;
 	}
 }
 
 .playerWeapon {
-	position: relative;
+	position: absolute;
 	animation-name: playerFight;
-	animation-duration: 0.3s;
+	animation-duration: 0.5s;
 	animation-fill-mode: forwards;
-	animation-timing-function: ease-out;
-	box-shadow: 0 0 50px 2px green;
+	animation-timing-function: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+	margin: 0;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
 }
 
 @keyframes playerFight{
 	0%{
-		left: 0;
+		left: 0%;
 	}
 	100%{
-		left: 30%;
+		left: 50%;
 	}
 }
