@@ -38,8 +38,8 @@ function playRound (event){
 		img.addEventListener('transitionend',showFight);
 		img.addEventListener('transitionend',e=>e.target.classList.remove('playerSelection'));
 		if (document.querySelector('.playerWeapon')){
-			document.querySelector('#playerCorner').removeChild(document.querySelector('.playerWeapon'));
-			document.querySelector('#cpuCorner').removeChild(document.querySelector('.cpuWeapon'));
+			document.querySelector('#playerImgHolder').removeChild(document.querySelector('.playerWeapon'));
+			document.querySelector('#cpuImgHolder').removeChild(document.querySelector('.cpuWeapon'));
 		}
 		
 		function showFight(params) {
@@ -48,8 +48,8 @@ function playRound (event){
 			let cpuSelection = document.querySelector(`img[alt="${computerSelection_}"]`);			
 			playerWeapon.setAttribute('src',`${img['src']}`);			
 			cpuWeapon.setAttribute('src',`${cpuSelection['src']}`);
-			document.getElementById('playerCorner').appendChild(playerWeapon);
-			document.getElementById('cpuCorner').appendChild(cpuWeapon);
+			document.getElementById('playerImgHolder').appendChild(playerWeapon);
+			document.getElementById('cpuImgHolder').appendChild(cpuWeapon);
 			playerWeapon.classList.add('playerWeapon');
 			cpuWeapon.classList.add('cpuWeapon');
 			img.removeEventListener('transitionend',showFight);

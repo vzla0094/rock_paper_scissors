@@ -1,12 +1,12 @@
 body {
-  
+  background: black;
   padding-top: 20px;
 }
 
 img {
   border-radius: 50%;
   transition: transform 0.3s;
-  width: 50%;
+  height: 100%;
 }
 
 img.weapons {
@@ -53,6 +53,15 @@ h1 {
 #arena {
 	display: inline-flex;	
 	width: 80%;
+	flex-direction: column;
+	background: whitesmoke;
+	border-radius: 150px;
+}
+
+#innerArena {
+	display: flex;
+	width: 100%;
+	height: 90%;
 }
 
 #playerCorner{
@@ -60,20 +69,20 @@ h1 {
 	position: relative;
 	text-align: center;
 	border-right: 1px solid gray;
+	display: grid;
+	grid-template-rows: 20px 20px .85fr;
 }
 
 #cpuCorner{
 	width: 50%;
 	position: relative;
 	text-align: center;
+	display: grid;
+    grid-template-rows: 20px 20px .85fr;
 }
 
-#score {
-	display: inline-flex;
-	flex-direction: column;
-	background: whitesmoke;
-	width: 20%;
-	text-align: center;	
+#results{
+	text-align: center;
 }
 
 .cpuWeapon {
@@ -83,17 +92,17 @@ h1 {
 	animation-fill-mode: forwards;
 	animation-timing-function: cubic-bezier(0.95, 0.05, 0.795, 0.035);
 	margin: 0;
-	top: 50%;
+	/*top: 50%;
 	-ms-transform: translateY(-50%);
-	transform: translateY(-50%);
+	transform: translateY(-50%);*/
 }
 
 @keyframes cpuFight{
 	0%{
-		right: 0;
+		left: 100%;
 	}
 	100%{
-		right: 50%;
+		left: 0%;
 	}
 }
 
@@ -104,16 +113,29 @@ h1 {
 	animation-fill-mode: forwards;
 	animation-timing-function: cubic-bezier(0.95, 0.05, 0.795, 0.035);
 	margin: 0;
-	top: 50%;
+	/*top: 50%;
 	-ms-transform: translateY(-50%);
-	transform: translateY(-50%);
+	transform: translateY(-50%);*/
 }
 
 @keyframes playerFight{
-	0%{
-		left: 0%;
+	from{
+		right: 100%;
 	}
-	100%{
-		left: 50%;
+	to{
+		right: 0%;
 	}
+}
+#playerImgHolder {
+	position: relative;
+	text-align: initial;
+}
+
+#cpuImgHolder {
+	position: relative;
+	text-align: initial;
+}
+
+p{
+	margin: 0;
 }
