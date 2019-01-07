@@ -1,5 +1,5 @@
 body {
-  background: black;
+  background: #5277c0;
   padding-top: 20px;
 }
 
@@ -21,7 +21,7 @@ img:hover {
 
 h1 {
   font-family: 'Thasadith', sans-serif;
-  color: rgb(165, 148, 148);
+  color: black;
 }
 
 #title{
